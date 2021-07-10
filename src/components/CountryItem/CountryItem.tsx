@@ -1,4 +1,4 @@
-import { Stack, Box, chakra, Image, Text } from "@chakra-ui/react";
+import { Stack, Box, chakra, Image, Text, useColorMode } from "@chakra-ui/react";
 import React from "react";
 import Country from "../../models/country";
 
@@ -7,34 +7,37 @@ interface Props {
 }
 
 const CountryItem: React.FC<Props> = ({ country }) => {
+  const { colorMode } = useColorMode();
+
   return (
     <Stack
-      backgroundColor="gray.700"
+      background={colorMode === "light" ? "white" : "darkBlue"}
       direction="column"
       justifyContent="space-between"
       paddingBottom={4}
+      shadow="md"
     >
-      <Box height="164px" minWidth="100%">
-        <Image alt={country.name} height="100%" minWidth="100%" src={country.flag} />
+      <Box height="168px" minWidth="100%">
+        <Image alt={country.name} height="100%" minWidth="100%" shadow="sm" src={country.flag} />
       </Box>
       <Stack alignItems="start" paddingLeft={8}>
-        <Text fontWeight="bold" marginY={3}>
+        <Text fontWeight="bold" marginY={3} variant="custom">
           {country.name}
         </Text>
         <Stack paddingBottom="1rem">
-          <Text fontSize="x-small" fontWeight="bold">
+          <Text fontSize="x-small" fontWeight="bold" variant="custom">
             Population:
             <chakra.span fontWeight="normal" marginLeft={2}>
               {Intl.NumberFormat().format(Number(country.population))}
             </chakra.span>
           </Text>
-          <Text fontSize="x-small" fontWeight="bold">
+          <Text fontSize="x-small" fontWeight="bold" variant="custom">
             Region:
             <chakra.span fontWeight="normal" marginLeft={2}>
               {country.region}
             </chakra.span>
           </Text>
-          <Text fontSize="x-small" fontWeight="bold">
+          <Text fontSize="x-small" fontWeight="bold" variant="custom">
             Capital:
             <chakra.span fontWeight="normal" marginLeft={2}>
               {country.capital}
