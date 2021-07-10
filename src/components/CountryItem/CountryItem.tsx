@@ -9,13 +9,19 @@ interface Props {
 const CountryItem: React.FC<Props> = ({ country }) => {
   const { colorMode } = useColorMode();
 
+  const handleClick = () => {
+    console.log(country);
+  };
+
   return (
     <Stack
+      _hover={{ cursor: "pointer" }}
       background={colorMode === "light" ? "white" : "darkBlue"}
       direction="column"
       justifyContent="space-between"
       paddingBottom={4}
       shadow="md"
+      onClick={handleClick}
     >
       <Box height="168px" minWidth="100%">
         <Image alt={country.name} height="100%" minWidth="100%" shadow="sm" src={country.flag} />
