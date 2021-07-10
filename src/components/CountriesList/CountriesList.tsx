@@ -10,7 +10,7 @@ interface Props {
 const CountriesList: React.FC<Props> = ({ countries }) => {
   return (
     <Grid
-      gap={12}
+      gap={20}
       marginTop={12}
       paddingX={{ base: "1rem", sm: "0rem" }}
       templateColumns={{ sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", xl: "repeat(4, 1fr)" }}
