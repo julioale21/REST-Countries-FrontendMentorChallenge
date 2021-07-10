@@ -11,6 +11,7 @@ const useSearch = () => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
   const [url, setUrl] = useState(startUrl);
+  const [searchTimeout, SetSearchTimeout] = useState<number | null>(null);
 
   React.useEffect(() => {
     setUrl(startUrl);
@@ -33,14 +34,24 @@ const useSearch = () => {
   }, [url]);
 
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearch(e.currentTarget.value);
-    setFilter("");
+    const searchText = e.currentTarget.value;
 
-    if (e.currentTarget.value !== "") {
-      setUrl(searchUrl + e.currentTarget.value);
-    } else {
-      setUrl(startUrl);
+    setSearch(searchText);
+
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
     }
+    SetSearchTimeout(
+      setTimeout(() => {
+        setFilter("");
+        if (searchText !== "") {
+          setUrl(searchUrl + searchText);
+        } else {
+          setUrl(startUrl);
+        }
+      }, 500),
+    );
+    clearTimeout(searchTimeout as number);
   };
 
   const handleFilterChange = (e: React.FormEvent<HTMLSelectElement>) => {
