@@ -7,7 +7,10 @@ const Header: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Container maxWidth={{ base: "container.xl" }}>
+    <Container
+      backgroundColor={colorMode === "light" ? "white" : "darkBlue"}
+      maxWidth={{ base: "container.xl" }}
+    >
       <Stack
         alignItems="center"
         direction="row"
