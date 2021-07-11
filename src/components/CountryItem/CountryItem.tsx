@@ -1,5 +1,6 @@
-import { Stack, Box, chakra, Image, Text, useColorMode } from "@chakra-ui/react";
 import React from "react";
+import { Stack, Box, chakra, Image, Text, useColorMode } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 import Country from "../../models/country";
 
 interface Props {
@@ -7,10 +8,11 @@ interface Props {
 }
 
 const CountryItem: React.FC<Props> = ({ country }) => {
+  const history = useHistory();
   const { colorMode } = useColorMode();
 
   const handleClick = () => {
-    console.log(country);
+    history.push("/detail/" + country.name, { country });
   };
 
   return (
