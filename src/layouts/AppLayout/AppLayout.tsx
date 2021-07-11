@@ -11,6 +11,7 @@ const AppLayout: React.FC = ({ children }) => {
       alignItems="center"
       backgroundColor={colorMode === "light" ? "veryLightGray" : "veryDarkBlueBg"}
       minHeight="100vh"
+      width="100%"
     >
       <Header />
       {children}
