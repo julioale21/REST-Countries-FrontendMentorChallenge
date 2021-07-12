@@ -17,6 +17,8 @@ const BorderList: React.FC<Props> = ({ borders }) => {
             alignItems="center"
             backgroundColor={colorMode === "light" ? "white" : "darkBlue"}
             borderRadius="3px"
+            maxWidth="80px"
+            overflow="hidden"
             padding="5px 3px"
             shadow="md"
             width="80px"
