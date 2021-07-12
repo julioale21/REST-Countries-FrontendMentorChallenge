@@ -9,10 +9,10 @@ const Header: React.FC = () => {
   return (
     <Stack
       backgroundColor={colorMode === "light" ? "white" : "darkBlue"}
-      minWidth="100vh"
+      minWidth="100%"
       width="100%"
     >
-      <Container maxWidth={{ base: "container.xl" }}>
+      <Container maxWidth={{ base: "420px", sm: "460px", md: "container.xl" }}>
         <Stack
           alignItems="center"
           direction="row"

@@ -11,12 +11,16 @@ interface Props {
 
 const CountryInfo: React.FC<Props> = ({ country, borders }) => {
   return (
-    <Stack justifyContent="center">
-      <Text fontSize="2xl" fontWeight="bold">
+    <Stack justifyContent="center" marginTop={{ base: 20, md: 0 }}>
+      <Text fontSize="2xl" fontWeight="bold" marginBottom={{ base: 5, md: 0 }}>
         {country.name}
       </Text>
-      <Stack direction="row" justifyContent="space-between" paddingRight={20}>
-        <Stack>
+      <Stack
+        direction={{ base: "column", md: "row" }}
+        justifyContent="space-between"
+        paddingRight={20}
+      >
+        <Stack marginBottom={{ base: 5, md: 0 }}>
           <TextValue title="Native Name" value={country.name} />
           <TextValue
             title="Population"
@@ -35,11 +39,15 @@ const CountryInfo: React.FC<Props> = ({ country, borders }) => {
           />
         </Stack>
       </Stack>
-      <Stack alignItems="center" direction="row" paddingTop={6}>
+      <Stack alignItems="center" direction={{ base: "column", md: "row" }} paddingTop={6}>
         <Text display="inline" fontSize="xs" fontWeight="bold" variant="custom">
           Border Countries:
         </Text>
-        {borders && <BorderList borders={borders} />}
+        {borders && (
+          <Stack direction="row" flexWrap="wrap" justifyContent="start">
+            <BorderList borders={borders} />
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

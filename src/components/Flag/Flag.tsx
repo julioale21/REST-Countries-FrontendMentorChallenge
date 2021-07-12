@@ -7,8 +7,13 @@ interface Props {
 }
 const Flag: React.FC<Props> = ({ flag, name }) => {
   return (
-    <Stack>
-      <Image alt={name} maxHeight="300px" maxWidth="450px" src={flag} />
+    <Stack direction="row" justifyContent="center">
+      <Image
+        alt={name}
+        maxHeight={{ base: "300px" }}
+        maxWidth={{ base: "300px", md: "450px" }}
+        src={flag}
+      />
     </Stack>
   );
 };

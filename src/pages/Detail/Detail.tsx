@@ -42,7 +42,7 @@ const Detail: React.FC = () => {
   let country: Country = location.state.country;
 
   return (
-    <Container marginX={0} maxW="container.xl" paddingTop={10}>
+    <Container marginX={0} maxW={{ base: "420px", md: "container.xl" }} paddingTop={10}>
       <Stack direction="row" justifyContent="flex-start" width="100%">
         <Button
           backgroundColor={colorMode === "light" ? "white" : "darkBlue"}
@@ -52,7 +52,7 @@ const Detail: React.FC = () => {
           <ArrowBackIcon marginRight={2} /> Back
         </Button>
       </Stack>
-      <Grid marginTop={20} templateColumns={{ md: "repeat(2, 1fr)" }}>
+      <Grid marginY={20} templateColumns={{ md: "repeat(2, 1fr)" }}>
         <Flag flag={country.flag} name={country.name} />
         <CountryInfo borders={borders} country={country} />
       </Grid>
